@@ -1,7 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View , Button} from 'react-native';
 
 export default function App() {
+  const [name,setName] =useState('Aanand')
+  const changeName = () => {
+    if (name == 'Aanand') {
+      setName('Paras')
+    }
+    if (name == 'Paras') {
+      setName('Aanand')
+    }
+  }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -9,8 +18,12 @@ export default function App() {
     </View>
     <View style={styles.body}>
       <Text style={styles.boldText}>Reactnative is awesome</Text>
+      <Text style={styles.boldText}>My name is {name}</Text>
       <Text style={styles.boldText}>Reactnative is awesome</Text>
-      <Text style={styles.boldText}>Reactnative is awesome</Text>
+    </View>
+    <View style={styles.button}>
+    {/* button is self closing tag */}
+    <Button title='Update Name ' onPress={changeName}/>
     </View>
 
     </View>
@@ -35,5 +48,8 @@ const styles = StyleSheet.create({
   body:{
     backgroundColor:'yellow',
     padding: 20
+  },
+  button: {
+    marginTop: 20
   }
 });
