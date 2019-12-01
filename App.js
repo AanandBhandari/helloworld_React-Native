@@ -1,31 +1,26 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View , Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput} from 'react-native';
 
 export default function App() {
   const [name,setName] =useState('Aanand')
-  const changeName = () => {
-    if (name == 'Aanand') {
-      setName('Paras')
-    }
-    if (name == 'Paras') {
-      setName('Aanand')
-    }
-  }
+  const [age,setAge] = useState(10)
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-      <Text style={styles.boldText}>Helloworld!</Text>
-    </View>
-    <View style={styles.body}>
-      <Text style={styles.boldText}>Reactnative is awesome</Text>
-      <Text style={styles.boldText}>My name is {name}</Text>
-      <Text style={styles.boldText}>Reactnative is awesome</Text>
-    </View>
-    <View style={styles.button}>
-    {/* button is self closing tag */}
-    <Button title='Update Name ' onPress={changeName}/>
-    </View>
-
+      <Text>Name is {name}, age is {age}</Text>
+      <Text style={styles.header}>Enter Name:</Text>
+      <TextInput
+        placeholder='e.g. Aanand'
+        style={styles.input}
+        multiline
+        onChangeText = {(val)=> setName(val)}
+      />
+      <Text style={styles.header}>Enter age:</Text>
+      <TextInput
+      keyboardType='number-pad'
+        placeholder='e.g. 10'
+        style={styles.input}
+        onChangeText={(val)=> setAge(val)}
+      />
     </View>
   );
 }
@@ -36,6 +31,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  input:{
+    borderBottomColor: 'red',
+    borderWidth: 2,
+    padding: 8,
+    margin:10,
+    width: 200
   },
   header: {
     backgroundColor: 'pink',
