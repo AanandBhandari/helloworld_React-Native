@@ -1,26 +1,27 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { StyleSheet, Text, View, ScrollView} from 'react-native';
 
 export default function App() {
-  const [name,setName] =useState('Aanand')
-  const [age,setAge] = useState(10)
+  const [people,setPeople] = useState([
+    {name:'Aanand', key:1},
+    { name: 'Nana', key: 2 },
+    { name: 'Sijju', key: 3 },
+    { name: 'Mahesh', key: 4 },
+    { name: 'Kanchan', key: 5 },
+    { name: 'Pradeep', key: 6 },
+    { name: 'Paras', key: 7 },
+    { name: 'Manjil', key: 8 },
+    { name: 'Erica', key: 9 }
+  ])
   return (
     <View style={styles.container}>
-      <Text>Name is {name}, age is {age}</Text>
-      <Text style={styles.header}>Enter Name:</Text>
-      <TextInput
-        placeholder='e.g. Aanand'
-        style={styles.input}
-        multiline
-        onChangeText = {(val)=> setName(val)}
-      />
-      <Text style={styles.header}>Enter age:</Text>
-      <TextInput
-      keyboardType='number-pad'
-        placeholder='e.g. 10'
-        style={styles.input}
-        onChangeText={(val)=> setAge(val)}
-      />
+      <ScrollView>
+        {people.map(item=> (
+          <View key={item.key}>
+            <Text style={styles.item}>{item.name}</Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -29,29 +30,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 40,
+    marginHorizontal: 20
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  input:{
-    borderBottomColor: 'red',
-    borderWidth: 2,
-    padding: 8,
-    margin:10,
-    width: 200
-  },
-  header: {
+  item: {
     backgroundColor: 'pink',
-    textAlign: 'center',
-    padding: 20
-  },
-  boldText: {
-    fontWeight: 'bold'
-  },
-  body:{
-    backgroundColor:'yellow',
-    padding: 20
-  },
-  button: {
-    marginTop: 20
+    marginTop: 24,
+    padding: 30,
+    fontSize: 34
   }
 });
