@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList,TouchableOpacity } from 'react-native'
 
-const ListScreen = () => {
+const ListScreen = props => {
     const data = [
         { name: 'friends 1', key:'1' },
         { name: 'friends 2', key:'2' },
@@ -13,22 +13,32 @@ const ListScreen = () => {
         { name: 'friends 8', key:'8' },
         { name: 'friends 010', key:'9' },
     ]
-    return (<FlatList
-        horizontal={true}//or horizontal only
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(extract)=>extract.name}
-        data={data}
-        renderItem={({ item }) => {
-            console.log(item)
-            return (<Text style={style.textStyle}>
-                {item.name}
-            </Text>)
-        }}
-    />)
+    return (
+        <View>
+            <TouchableOpacity onPress={()=> props.navigation.navigate("Home")}>
+                <Text style={style.textButton}>Go to home</Text>
+            </TouchableOpacity>
+            <FlatList
+                // horizontal={true}//or horizontal only
+                showsVerticalScrollIndicator= {false}
+                keyExtractor={(extract)=>extract.name}
+                data={data}
+                renderItem={({ item }) => {
+                    console.log(item)
+                    return (<Text style={style.textStyle}>
+                        {item.name}
+                    </Text>)
+                }}
+            />
+        </View>)
 }
 const style = StyleSheet.create({
     textStyle: {
-        marginHorizontal:50
+        marginVertical:50
+    },
+    textButton:{
+        fontSize:20,
+        color:'red'
     }
 })
 
