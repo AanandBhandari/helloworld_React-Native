@@ -6,9 +6,9 @@ const HomeScreen = props => {
     <View>
       <Text style={styles.text}>HomeScreen</Text>
       <Button title='Go to listScreen' onPress={() => props.navigation.navigate('ListScreen')}/>
-      <TouchableOpacity onPress={()=> console.log('button pressed!!!')}>
+      <TouchableOpacity onPress={()=> props.navigation.navigate("ImageScreen")}>
         {/* it cn take any kind of component*/}
-        <Text style={styles.text}>Hello from TouchableOpacity</Text>
+        <Text style={styles.text}>Go to Image Screen</Text>
       </TouchableOpacity>
     </View>
   );

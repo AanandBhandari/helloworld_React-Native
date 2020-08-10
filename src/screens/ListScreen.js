@@ -24,7 +24,6 @@ const ListScreen = props => {
                 keyExtractor={(extract)=>extract.name}
                 data={data}
                 renderItem={({ item }) => {
-                    console.log(item)
                     return (<Text style={style.textStyle}>
                         {item.name}
                     </Text>)
